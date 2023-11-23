@@ -49,7 +49,7 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="Example Name" {...field} />
                 </FormControl>
                 <FormDescription>
                   This is your public display name.
