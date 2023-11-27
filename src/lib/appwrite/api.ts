@@ -247,21 +247,17 @@ export async function savePost(postId: string, userId: string) {
   }
 }
 
-export async function deletePost(postId: string, userId: string) {
+export async function deleteSavedPost(savedRecordId: string) {
   try {
-    const updatedPost = await databases.createDocument(
+    const statusCode = await databases.deleteDocument(
       appwriteConfig.databaseId,
       appwriteConfig.savesCollectionId,
-      ID.unique(),
-      {
-        user: userId,
-        post: postId
-      }
+      savedRecordId
     )
 
-    if(!updatedPost) throw Error
+    if(!statusCode) throw Error
 
-    return updatedPost
+    return {status:'ok' }
   } catch (error) {
     console.log(error)
   }
