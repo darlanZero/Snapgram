@@ -51,13 +51,9 @@ const PostForm = ({ post }: PostFormProps) => {
 
     if(!newPost) {
       toast({
-        title: 'Pllease Try Again',
+        title: 'Please Try Again',
       })
     }
-
-    toast({
-      title: 'Your Post has submitted!'
-    })
 
     navigate('/')
   }
