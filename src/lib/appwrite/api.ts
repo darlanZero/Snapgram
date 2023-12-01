@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ID, Query } from "appwrite";
+import { ID, Models, Query } from "appwrite";
 
 import { appwriteConfig, account, databases, storage, avatars } from "./config";
 import { IUpdatePost, INewPost, INewUser } from "@/types";
@@ -386,7 +386,7 @@ export async function searchPosts(searchTerm: string) {
 
     if(!posts) throw Error;
 
-    return posts
+    return posts.documents as Models.Document[] | undefined
 
   } catch (error) {
     console.log(error)

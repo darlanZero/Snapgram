@@ -22,7 +22,7 @@ const Explore = () => {
   }, [fetchNextPage, inView, searchValue])
 
   if(!posts) {
-    return (
+    return [] && (
       <div flex-center w-full h-full>
         <Loader />
       </div>
@@ -30,7 +30,7 @@ const Explore = () => {
   }
 
   const shouldShowSearchResults = searchValue !== ''
-  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item.documents.length === 0)
+  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item?.documents.length === 0)
 
   return (
     <div className='explore-container'>
@@ -82,7 +82,7 @@ const Explore = () => {
         ): shouldShowPosts ? (
           <p className='text-light-4 mt-10 text-center w-full'>End of Posts</p>
         ): posts.pages.map((item, index) => (
-          <GridPostList key={`page-${index}`} posts={item?.documents}/>
+          <GridPostList key={`page-${index}`} posts={item?.documents ?? []}/>
         ))}
         </div>
 
