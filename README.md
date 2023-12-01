@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+---
+runme:
+  id: 01HGHK7M4BPBDYVRSKPE6MZ5JZ
+  version: v2.0
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Snapgram Social Media App 
+---------
 
-Currently, two official plugins are available:
+Snapgram is a social media app created by JS Mastery to teach new developers several things of Web Development, such as Fullstack Development using cloud database connections, complex and secure API handling, and return of API/Databases data on a frontend Desktop - Mobile website. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<i>The tools used in this was:<i />
 
-## Expanding the ESLint configuration
+<ul>
+    <li>React - Base Framework for NodeJS<li />
+    <li>TypeScript - a Superset of JavaScript<li />
+    <li>Vite - Framework for React, handling with Fast refresh and Render Components<li />
+    <li>Shadcn-ui - A lib for Design Patterns on websites<li />
+    <li>Tailwind - A Framework for CSS styles with more flexibility and easier to use. In this App was used with PostCSS plugin<li />
+    <li>Appwrite - A Cloud run database / Auth API for cloud APIs<li />
+<ul />
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Go Check [The Website](https://snapgram-blush.vercel.app/sign-in) to see the final result!
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+And don't forget to check [JS Mastery Profile](https://github.com/adrianhajdin) to see the original creator repos and follow him!
