@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { getCurrentUser } from '@/lib/appwrite/api'
 import { IContextType, IUser } from '@/types'
 import React, {createContext, useContext, useEffect, useState} from 'react'
@@ -69,7 +70,7 @@ const AuthProvider = ({children}:  {children: React.ReactNode} ) => {
         ) navigate('sign-in')
 
         checkAuthUser()
-    }, [])
+    }, [navigate])
 
     const value = {
         user,
