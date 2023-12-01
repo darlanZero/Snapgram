@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -23,12 +24,12 @@ import { useUserContext } from '@/context/AuthContext'
 const SignupForm = () => {
 
   const { toast } = useToast()
-  const { checkAuthUser, } = useUserContext()
+  const { checkAuthUser, isLoading: isUserLoading} = useUserContext()
   const navigate = useNavigate()
 
   const {mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount()
 
-  const { mutateAsync: signInAccount, } = useSignInAccount()
+  const { mutateAsync: signInAccount, isPending: isSigningInUser } = useSignInAccount()
 
 
 
@@ -44,35 +45,39 @@ const SignupForm = () => {
   })
  
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+  async function onSubmit(user: z.infer<typeof SignupValidation>) {
     // create the user
-   const newUser = await createUserAccount(values)
-
-   if(!newUser) {
-    return toast({
-      title: 'Sign Up failed. Please try again.',
-    })
-   }
-
-   const session = await signInAccount({
-    email: values.email,
-    password: values.password 
-   })
-
-   if(!session) {
-    return toast({title: 'Sign in failed. Please try again'})
-   }
-
-    const isLoggedIn = await checkAuthUser()
-
-    if(isLoggedIn) {
-      form.reset()
-
-      navigate('/')
-    } else {
-      return toast({title: 'Sign up failed. Please try again.'})
+    try {
+        const newUser = await createUserAccount(user)
+    
+        if(!newUser) {
+        return toast({
+          title: 'Sign Up failed. Please try again.',
+        })
+        }
+    
+        const session = await signInAccount({
+        email: user.email,
+        password: user.password 
+        })
+    
+        if(!session) {
+        return toast({title: 'Something went wrong. Please login your new account'})
+        }
+    
+        const isLoggedIn = await checkAuthUser()
+    
+        if(isLoggedIn) {
+          form.reset()
+    
+          navigate('/')
+        } else {
+          return toast({title: 'Sign up failed. Please try again.'})
+        }
+    } catch (error) {
+      console.log({error})
     }
-  }
+  } 
 
   return (
       <Form {...form}>
