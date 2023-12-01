@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { useSignOutAccount } from '@/lib/react-query/QueriesAndMutations'
 import { useUserContext } from '@/context/AuthContext'
+import { useEffect } from 'react'
 
 const TopBar = () => {
 
@@ -14,7 +15,7 @@ const TopBar = () => {
 
     useEffect(() => {
         if (isSuccess) navigate(0)
-    }, [isSuccess])
+    }, [isSuccess, navigate])
 
   return (
     <section className='topbar'>
